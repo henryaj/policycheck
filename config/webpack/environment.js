@@ -1,7 +1,17 @@
-const { environment } = require('@rails/webpacker')
-const { VueLoaderPlugin } = require('vue-loader')
-const vue = require('./loaders/vue')
+// some insane hack from https://gist.github.com/zapad7715/9ff593d87f1a040f9129565d024f8a95 that I don't care to understand
 
-environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
-environment.loaders.prepend('vue', vue)
+const { environment } = require('@rails/webpacker')
+const vue =  require('./loaders/vue')
+
+environment.loaders.append('vue', vue)
+
+const resolver = {
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  }
+}
+environment.config.merge(resolver)
+
 module.exports = environment

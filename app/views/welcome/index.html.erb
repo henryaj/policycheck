@@ -1,3 +1,80 @@
 <div id="main">
-  <app></app>
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand href="#"><span class="logotype">Mast</span> Policy Checker</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="#">Link</b-nav-item>
+          <b-nav-item href="#" disabled>Disabled</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-form>
+            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+          </b-nav-form>
+
+
+          <b-nav-item-dropdown right>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <em>User</em>
+            </template>
+            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+
+    <b-container>
+      <b-row class="justify-content-center pt-5">
+        <b-col sm="8">
+          <h1>Check buy-to-let licence requirements</h1>
+          <b-form class="pt-2" @submit="getAddress">
+            <b-form-group>
+              <b-form-input class="input-lg" v-model="form.postcode" type="text" required placeholder="Property postcode"></b-form-input>
+            </b-form-group>
+            <b-button type="submit" variant="primary">Look up</b-button>
+          </b-form>
+        </b-col>
+        <b-col sm="8" class="pt-2" v-show="showAddressForm">
+          <b-form @submit="checkLicence">
+            <hr>
+            <h3>Address details</h3>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.addressLine1" required placeholder="Address line 1">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.addressLine2" placeholder="Address line 2">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.addressLine3" placeholder="Address line 3">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.addressLine4" placeholder="Address line 4">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.city" placeholder="Town or city">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input type="text" v-model="form.country" placeholder="Country">
+              </b-form-input>
+            </b-form-group>
+            <b-button type="submit" variant="danger">Check property licence</b-button>
+          </b-form>
+        </b-col>
+      </b-row>
+    </b-container>
+  </div>
 </div>

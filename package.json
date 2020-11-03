@@ -6,8 +6,12 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.18.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
+    "vue-bootstrap-typeahead": "^0.2.6",
     "vue-loader": "^15.9.4",
     "vue-template-compiler": "^2.6.12"
   },
