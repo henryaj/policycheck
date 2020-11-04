@@ -22,7 +22,7 @@ import './user.scss'
 document.addEventListener('DOMContentLoaded', () => {
   // let postcodeURL = 'https://api.getAddress.io/find/'
   let postcodeURL = 'localhost:9999/getaddress/'
-  let licencingURL = 'localhost:9999/kamma'
+  let licencingURL = '/licence'
 
   const app = new Vue({
     el: '#main',
@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault()
 
         let payload = {
-          'property_id': 'foo',
           'address_1': this.form.addressLine1,
           'postcode': this.form.postcode,
         }
@@ -75,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
           payload['address_2'] = this.form.addressLine4
         }
 
-
-        axios.post(licencingURL, payload)
+        axios.post(licencingURL, {data: payload, authenticity_token: window._token})
           .then((resp) => console.log(resp))
           .catch((resp) => console.log(resp))
       }
